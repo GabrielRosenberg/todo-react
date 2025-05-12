@@ -1,5 +1,6 @@
 import { TodoLists } from './todos/components/TodoLists'
 import MainAppBar from './todos/components/AppBar'
+import { SnackbarProvider } from './context/SnackbarContext.jsx'
 
 /** @type {React.CSSProperties} */
 const mainWrapperStyle = { display: 'flex', flexDirection: 'column' }
@@ -28,9 +29,11 @@ const MainWrapper = ({ children }) => {
 
 const App = () => {
   return (
-    <MainWrapper>
-      <TodoLists style={{ margin: '1rem' }} />
-    </MainWrapper>
+    <SnackbarProvider>
+      <MainWrapper>
+        <TodoLists style={{ margin: '1rem' }} />
+      </MainWrapper>
+    </SnackbarProvider>
   )
 }
 
