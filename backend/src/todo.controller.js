@@ -1,10 +1,11 @@
 import { getTodoListById, getTodoListsWithIdAndName } from './todo.repository.js'
 import updateTodosService from './todo.service.js'
+import statusCodes from './utils/statusCodes.js'
 
 const getTodoLists = async (req, res) => {
   try {
     const todoLists = getTodoListsWithIdAndName()
-    res.status(200).json(todoLists)
+    res.status(statusCodes.OK).json(todoLists)
   } catch (error) {
     res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' })
   }
@@ -15,12 +16,12 @@ const getTodoList = async (req, res) => {
   try {
     const todoList = getTodoListById(listId)
     if (!todoList) {
-      res.status(404).json({ error: 'Todo list not found' })
+      res.status(statusCodes.NOT_FOUND).json({ error: 'Todo list not found' })
     } else {
-      res.status(200).json(todoList)
+      res.status(statusCodes.OK).json(todoList)
     }
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' })
+    res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' })
   }
 }
 
@@ -29,20 +30,22 @@ const updateTodoList = async (req, res) => {
   const todoItemsInRequest = req.body
 
   if (!todoItemsInRequest || !Array.isArray(todoItemsInRequest)) {
-    res.status(204).json({ error: 'Missing todos' })
+    res.status(statusCodes.NO_CONTENT).json({ error: 'Missing todos' })
     return
   }
 
   const todoListToUpdate = getTodoListById(listId)
   if (!todoListToUpdate) {
-    res.status(404).json({ error: `Todo list with the given ID ${listId} does not exist` })
+    res
+      .status(statusCodes.NOT_FOUND)
+      .json({ error: `Todo list with the given ID ${listId} does not exist` })
     return
   }
 
   const updatedTodos = updateTodosService(todoItemsInRequest)
 
   todoListToUpdate.todos = updatedTodos
-  res.status(201).json(todoListToUpdate)
+  res.status(statusCodes.CREATED).json(todoListToUpdate)
 }
 
 export { getTodoLists, getTodoList, updateTodoList }
