@@ -1,5 +1,6 @@
+import { useSnackbar } from '../context/SnackbarContext.jsx'
+
 const BASE_URL = 'http://localhost:3001'
-import { useSnackbar } from '../hooks/useSnackbar'
 
 export const useTodoApi = () => {
   const { showSnackbar } = useSnackbar()
