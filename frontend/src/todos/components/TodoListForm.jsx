@@ -63,7 +63,7 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
         <form style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           {todos.map((/** @type {Todo} */ todo, /** @type {number} */ index) => (
             <TodoListItem
-              key={index}
+              key={todo.id ?? index}
               todo={todo}
               index={index}
               onTextfieldChange={onTextfieldChange}

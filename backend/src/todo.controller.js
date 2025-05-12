@@ -6,7 +6,7 @@ const getTodoLists = async (req, res) => {
   try {
     const todoLists = getTodoListsWithIdAndName()
     res.status(statusCodes.OK).json(todoLists)
-  } catch (error) {
+  } catch {
     res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' })
   }
 }
@@ -20,7 +20,7 @@ const getTodoList = async (req, res) => {
     } else {
       res.status(statusCodes.OK).json(todoList)
     }
-  } catch (error) {
+  } catch {
     res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' })
   }
 }
