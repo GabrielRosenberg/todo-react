@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { TextField, Card, CardContent, CardActions, Button, Typography } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { useState } from 'react'
+import { Card, CardContent, CardActions, Button, Typography } from '@mui/material'
+import { TodoListItem } from './TodoListItem.jsx'
 import AddIcon from '@mui/icons-material/Add'
 
 export const TodoListForm = ({ todoList, saveTodoList }) => {

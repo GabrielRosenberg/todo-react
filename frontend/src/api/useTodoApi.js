@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:3001'
+import { useSnackbar } from '../hooks/useSnackbar'
 
 export const useTodoApi = () => {
   const { showSnackbar } = useSnackbar()
@@ -7,8 +8,8 @@ export const useTodoApi = () => {
     try {
       const res = await fetch(`${BASE_URL}/todos`)
       return await res.json()
-    } catch (err) {
-      console.error('Error fetching todo lists:', err)
+    } catch {
+      showSnackbar('Error fetching todo lists')
     }
   }
 
@@ -16,8 +17,8 @@ export const useTodoApi = () => {
     try {
       const res = await fetch(`${BASE_URL}/todos/${listId}`)
       return await res.json()
-    } catch (err) {
-      console.error('Error fetching active todo list:', err)
+    } catch {
+      showSnackbar('Error fetching active todo list')
     }
   }
 
@@ -31,8 +32,8 @@ export const useTodoApi = () => {
         body: JSON.stringify(todos),
       })
       return await res.json()
-    } catch (err) {
-      console.error('Error updating todo list:', err)
+    } catch {
+      showSnackbar('Error updating todo list')
     }
   }
   return { fetchTodoLists, fetchActiveTodoList, updateTodoList }
