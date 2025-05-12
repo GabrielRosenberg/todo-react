@@ -1,27 +1,20 @@
-import React from 'react'
-import { AppBar, Toolbar, Typography } from '@mui/material'
 import { TodoLists } from './todos/components/TodoLists'
+import MainAppBar from './todos/components/AppBar'
 
-const MainAppBar = () => {
-  return (
-    <AppBar position='static' color='primary'>
-      <Toolbar>
-        <Typography variant='h6' color='inherit'>
-          Things to do
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  )
-}
-
+/** @type {React.CSSProperties} */
 const mainWrapperStyle = { display: 'flex', flexDirection: 'column' }
+
+/** @type {React.CSSProperties} */
 const centerContentWrapper = { display: 'flex', justifyContent: 'center' }
+
+/** @type {React.CSSProperties} */
 const contentWrapperStyle = {
   display: 'flex',
   flexDirection: 'column',
   maxWidth: '80rem',
   flexGrow: 1,
 }
+
 const MainWrapper = ({ children }) => {
   return (
     <div style={mainWrapperStyle}>
