@@ -1,5 +1,5 @@
 import { TodoLists } from './todos/components/TodoLists'
-import MainAppBar from './todos/components/AppBar'
+import MainAppBar from './todos/components/AppBar.jsx'
 import { SnackbarProvider } from './context/SnackbarContext.jsx'
 
 /** @type {React.CSSProperties} */
