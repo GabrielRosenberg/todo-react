@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 export const todoLists = [
   {
     id: uuid(),
-    title: 'Default List',
+    title: 'First List',
     todos: [
       {
         id: uuid(),
@@ -16,7 +16,7 @@ export const todoLists = [
   },
   {
     id: uuid(),
-    title: 'Default List',
+    title: 'Second List',
     todos: [
       {
         id: uuid(),
